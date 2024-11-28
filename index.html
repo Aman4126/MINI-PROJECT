@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Digital Learning</title>
+    <link rel="shortcut icon" href="./pngwing.com.png" type="image/x-icon">
+<link rel="stylesheet" href="style2.css">
+
+
+</head>
+<body>
+    <header>
+        <img src="https://t4.ftcdn.net/jpg/01/19/89/65/240_F_119896567_Wd5p8NQ0BE6fFJ7jKkFnzflGOEwh6DhT.jpg" height="150px" width="150px" alt="">
+        <h1>Welcome to Digital Learning</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#roadmapSection">Roadmap Videos</a></li>
+            <li><a href="#osSection">Operating System Videos</a></li>
+            <li><a href="#dbmsSection">DBMS Videos</a></li>
+            <li><a href="#dsaSection">DSA Videos</a></li>
+            <li><a href="#webSection">Web Development Videos</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." aria-label="Search">
+        </div>
+        <div class="login">
+            <button id="loginBtn">Login</button>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+
+    
+    <div class="dropdown" id="dropdownMenu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">Online Compiler</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+      <!-- Modal for Login/Registration -->
+      <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" style="float:right; cursor:pointer;">&times;</span>
+            <h2 id="modalTitle">Login</h2>
+
+            <!-- Login Form -->
+            <div id="loginForm">
+                <input type="text" placeholder="Username" aria-label="Username">
+                <input type="password" placeholder="Password" aria-label="Password">
+                <button type="button" id="loginSubmitBtn">Login</button>
+                <p>New user? <span id="toggleForm" style="color: blue; cursor: pointer;">Register</span></p>
+            </div>
+
+            <!-- Register Form (Initially hidden) -->
+            <div id="registerForm" style="display: none;">
+                <input type="text" placeholder="Username" aria-label="Username">
+                <input type="email" placeholder="Email" aria-label="Email">
+                <input type="password" placeholder="Password" aria-label="Password">
+                <button type="button" id="registerSubmitBtn">Register</button>
+                <p>Already have an account? <span id="toggleToLogin" style="color: blue; cursor: pointer;">Login</span></p>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section>
+            <h2>About Digital Learning</h2>
+            <p>Digital Learning's mission is to make coding education accessible to everyone, regardless of their background or experience. We offer a variety of courses on topics such as web development, data science, and machine learning, taught by experienced engineers passionate about teaching.</p>
+            <p>We provide resources including practice problems, coding challenges, and forums for student interaction. Digital Learning is an excellent choice for anyone eager to learn coding skills, offering diverse courses, experienced instructors, and affordability for students on a budget.</p>
+        </section>
+        
+        <section id="roadmapSection">
+            <h2>RoadMap Videos</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/GLk7-imcjiI?si=sik92-svbERJcLhY" title="Roadmap Video" allowfullscreen></iframe>
+        </section>
+
+        <section id="osSection">
+            <h2>Operating System Videos</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/3obEP8eLsCw?si=d83DncFu6Y4GUgc9" title="OS Video" allowfullscreen></iframe>
+        </section>
+
+        <section id="dbmsSection">
+            <h2>DBMS Videos</h2>
+            <iframe width="560" height="315" title="DBMS Video" allowfullscreen></iframe>
+        </section>
+
+        <section id="dsaSection">
+            <h2>DSA Videos</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1yrh60og6qc?si=xR7i-tnul6qylcg_" title="DSA Video" allowfullscreen></iframe>
+        </section>
+
+        <section id="webSection">
+            <h2>Web Dev Videos</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/k7ELO356Npo?si=-SA1n5HTcV4Vfyp-" title="Web Dev Video" allowfullscreen></iframe>
+        </section>
+    </main>
+
+    <footer>
+        © 2024 Digital Learning. All rights reserved.
+    </footer>
+
+    </body>
+    </html>
+    <script>
+    const modal = document.getElementById("loginModal");
+    const loginBtn = document.getElementById("loginBtn");
+    const closeModal = document.getElementById("closeModal");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const hamburger = document.getElementById("hamburger");
+
+    // Get the elements for login and register forms and titles
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const modalTitle = document.getElementById("modalTitle");
+    const toggleForm = document.getElementById("toggleForm");
+    const toggleToLogin = document.getElementById("toggleToLogin");
+
+    // Show modal on Login button click
+    loginBtn.onclick = function () {
+        modal.style.display = "block";
+        modalTitle.textContent = "Login";
+        loginForm.style.display = "block"; // Ensure login form is shown initially
+        registerForm.style.display = "none"; // Hide register form initially
+    };
+
+    // Close modal when clicking the close button
+    closeModal.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // Prevent modal from closing when clicking inside the modal content
+    modal.querySelector(".modal-content").onclick = function (event) {
+        event.stopPropagation();
+    };
+
+    // Close modal if the user clicks anywhere outside the modal content
+    modal.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // Toggle to Registration Form
+    toggleForm.onclick = function () {
+        loginForm.style.display = "none";
+        registerForm.style.display = "block";
+        modalTitle.textContent = "Register";
+    };
+
+    // Toggle back to Login Form
+    toggleToLogin.onclick = function () {
+        registerForm.style.display = "none";
+        loginForm.style.display = "block";
+        modalTitle.textContent = "Login";
+    };
+
+    // Toggle dropdown menu for mobile
+    hamburger.onclick = function () {
+        dropdownMenu.classList.toggle("show");
+    };
+
+    // Close dropdown if clicked outside
+    window.onclick = function (event) {
+        if (!event.target.matches(".hamburger") && dropdownMenu.classList.contains("show")) {
+            dropdownMenu.classList.remove("show");
+        }
+    };
+
+    // Add event listener to handle form submission for Login and Register
+    document.getElementById("loginSubmitBtn").onclick = function () {
+        alert("Login submitted!");
+    };
+
+    document.getElementById("registerSubmitBtn").onclick = function () {
+        alert("Registration submitted!");
+    };
+</script>
