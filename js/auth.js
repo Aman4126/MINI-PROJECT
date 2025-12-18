@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            fetch("http://localhost:3000/login", {
+            fetch("https://mini-project-backend-mam6.onrender.com", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password })
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            fetch("http://localhost:3000/register", {
+            fetch("https://mini-project-backend-mam6.onrender.com", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, email, password })
