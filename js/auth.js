@@ -1,61 +1,81 @@
-const modal = document.getElementById("loginModal");
-const loginBtn = document.getElementById("loginBtn");
-const closeModal = document.getElementById("closeModal");
-const dropdownMenu = document.getElementById("dropdownMenu");
-const hamburger = document.getElementById("hamburger");
+document.addEventListener("DOMContentLoaded", () => {
 
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
-const modalTitle = document.getElementById("modalTitle");
-const toggleForm = document.getElementById("toggleForm");
-const toggleToLogin = document.getElementById("toggleToLogin");
+    const modal = document.getElementById("loginModal");
+    const loginBtn = document.getElementById("loginBtn");
+    const closeModal = document.getElementById("closeModal");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const hamburger = document.getElementById("hamburger");
 
-loginBtn.onclick = () => {
-    modal.style.display = "block";
-    modalTitle.textContent = "Login";
-    loginForm.style.display = "block";
-    registerForm.style.display = "none";
-};
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const modalTitle = document.getElementById("modalTitle");
+    const toggleForm = document.getElementById("toggleForm");
+    const toggleToLogin = document.getElementById("toggleToLogin");
 
-closeModal.onclick = () => modal.style.display = "none";
-modal.onclick = () => modal.style.display = "none";
-modal.querySelector(".modal-content").onclick = e => e.stopPropagation();
+    // OPEN MODAL
+    loginBtn.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalTitle.textContent = "Login";
+        loginForm.style.display = "block";
+        registerForm.style.display = "none";
+    });
 
-toggleForm.onclick = () => {
-    loginForm.style.display = "none";
-    registerForm.style.display = "block";
-    modalTitle.textContent = "Register";
-};
+    // CLOSE MODAL
+    closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
 
-toggleToLogin.onclick = () => {
-    registerForm.style.display = "none";
-    loginForm.style.display = "block";
-    modalTitle.textContent = "Login";
-};
+    modal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
 
-hamburger.onclick = () => dropdownMenu.classList.toggle("show");
+    modal.querySelector(".modal-content").addEventListener("click", e => {
+        e.stopPropagation();
+    });
 
-document.getElementById("loginSubmitBtn").onclick = () => {
-    const username = document.getElementById("loginUsername").value.trim();
-    const password = document.getElementById("loginPassword").value.trim();
+    // TOGGLE FORMS
+    toggleForm.addEventListener("click", () => {
+        loginForm.style.display = "none";
+        registerForm.style.display = "block";
+        modalTitle.textContent = "Register";
+    });
 
-    if (!username || !password) {
-        alert("Please enter username and password");
-        return;
-    }
+    toggleToLogin.addEventListener("click", () => {
+        registerForm.style.display = "none";
+        loginForm.style.display = "block";
+        modalTitle.textContent = "Login";
+    });
 
-    console.log("LOGIN:", { username, password });
-};
+    // MOBILE MENU
+    hamburger.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("show");
+    });
 
-document.getElementById("registerSubmitBtn").onclick = () => {
-    const username = document.getElementById("regUsername").value.trim();
-    const email = document.getElementById("regEmail").value.trim();
-    const password = document.getElementById("regPassword").value.trim();
+    // LOGIN
+    document.getElementById("loginSubmitBtn").addEventListener("click", () => {
+        const username = document.getElementById("loginUsername").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
 
-    if (!username || !email || !password) {
-        alert("Please fill all registration fields");
-        return;
-    }
+        if (!username || !password) {
+            alert("Please enter username and password");
+            return;
+        }
 
-    console.log("REGISTER:", { username, email, password });
-};
+        console.log("LOGIN:", { username, password });
+    });
+
+    // REGISTER
+    document.getElementById("registerSubmitBtn").addEventListener("click", () => {
+        const username = document.getElementById("regUsername").value.trim();
+        const email = document.getElementById("regEmail").value.trim();
+        const password = document.getElementById("regPassword").value.trim();
+
+        if (!username || !email || !password) {
+            alert("Please fill all registration fields");
+            return;
+        }
+
+        console.log("REGISTER:", { username, email, password });
+    });
+
+});
