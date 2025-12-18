@@ -61,10 +61,21 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        console.log("LOGIN:", { username, password });
+          fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+    })
+    .catch(err => {
+        alert("Login failed");
+        console.error(err);
+    }); 
     });
-
-    // REGISTER
+     // REGISTER
     document.getElementById("registerSubmitBtn").addEventListener("click", () => {
         const username = document.getElementById("regUsername").value.trim();
         const email = document.getElementById("regEmail").value.trim();
@@ -75,7 +86,27 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        console.log("REGISTER:", { username, email, password });
+    fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password })
+    })
+    .then(async res => {
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+  return data;
+})
+.then(data => {
+  alert(data.message);
+})
+.catch(err => {
+  alert(err.message);
+});
+    .catch(err => {
+        alert("Registration failed");
+        console.error(err);
     });
-
+});
 });
