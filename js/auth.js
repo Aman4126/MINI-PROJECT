@@ -1,5 +1,3 @@
-alert("auth.js loaded");
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const modal = document.getElementById("loginModal");
@@ -14,18 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleForm = document.getElementById("toggleForm");
     const toggleToLogin = document.getElementById("toggleToLogin");
 
+    const API_BASE = "https://mini-project-backend-mam6.onrender.com";
 
-    /* ---------- MODAL OPEN ---------- */
+    /* ---------- OPEN MODAL ---------- */
     if (loginBtn && modal) {
         loginBtn.addEventListener("click", () => {
-            modal.style.display = "none";
+            modal.style.display = "block";   // ✅ FIXED
             modalTitle.textContent = "Login";
             loginForm.style.display = "block";
             registerForm.style.display = "none";
         });
     }
 
-    /* ---------- MODAL CLOSE ---------- */
+    /* ---------- CLOSE MODAL ---------- */
     if (closeModal) {
         closeModal.addEventListener("click", () => {
             modal.style.display = "none";
@@ -79,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            fetch("https://mini-project-backend-mam6.onrender.com", {
+            fetch(`${API_BASE}/login`, {     // ✅ FIXED
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password })
@@ -106,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            fetch("https://mini-project-backend-mam6.onrender.com", {
+            fetch(`${API_BASE}/register`, {  // ✅ FIXED
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, email, password })
