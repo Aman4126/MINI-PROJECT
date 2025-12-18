@@ -1,3 +1,5 @@
+alert("auth.js loaded");
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const modal = document.getElementById("loginModal");
