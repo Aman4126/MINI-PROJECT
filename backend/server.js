@@ -23,9 +23,14 @@ app.post("/register", async (req, res) => {
       "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
       [username, email, hashedPassword],
       err => {
-        if (err) {
-          return res.status(400).json({ message: "User already exists" });
-        }
+       if (err) {
+  if (err.code === "ER_DUP_ENTRY") {
+    return res.status(400).json({ message: "User already exists" });
+  }
+  console.error(err);
+  return res.status(500).json({ message: "Server error" });
+}
+
         res.json({ message: "Registration successful" });
       }
     );
