@@ -14,10 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleForm = document.getElementById("toggleForm");
     const toggleToLogin = document.getElementById("toggleToLogin");
 
+
     /* ---------- MODAL OPEN ---------- */
     if (loginBtn && modal) {
         loginBtn.addEventListener("click", () => {
-            modal.style.display = "block";
+            modal.style.display = "none";
             modalTitle.textContent = "Login";
             loginForm.style.display = "block";
             registerForm.style.display = "none";
